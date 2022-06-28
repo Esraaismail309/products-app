@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-import './test.scss'
+import React from 'react';
+import { Navbar } from './shared/Navbar';
+import { Route, Routes } from 'react-router-dom';
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools'
+import { ProductList } from './components/productList/ProductList';
+import { ProductDetails } from './components/productList/ProductDetails'
+
 function App() {
+  const queryClient = new QueryClient()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<ProductList />} exact />
+        <Route path='/products' element={<ProductList />} />
+        <Route path='/products/:id' element={<ProductDetails />} />
+        {/* <Route path='/cart'  */}
+      </Routes>
+      <ReactQueryDevtools position='bottom-right' initialIsOpen={false} />
+
+    </QueryClientProvider>
   );
 }
 
