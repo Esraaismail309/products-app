@@ -5,15 +5,16 @@ import { Link } from 'react-router-dom';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useDispatch } from 'react-redux';
 import { addToCartAction } from '../../store/Cart/CartActions';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 export const ProductCard = ({ product }) => {
     const dispatch = useDispatch()
     const notify = () => {
-        toast("Success Notification !", { className: "custom-toast", draggable: true, position: toast.POSITION.TOP_RIGHT });
+        toast.success("product added to cart !");
     }
     const handleAddToCart = (product) => {
         dispatch(addToCartAction(product))
+        notify()
     }
 
 
@@ -38,13 +39,12 @@ export const ProductCard = ({ product }) => {
                 <Button type='button' variant="contained" sx={{ bottom: 0, m: 2 }}
                     onClick={() => {
                         handleAddToCart(product)
-                        // notify()
+
                     }}>
 
                     Add to cart <AddShoppingCartIcon sx={{ ml: 2 }} />
                 </Button>
             </Card>
-            {/* <ToastContainer autoClose={2000} /> */}
         </Grid >
     )
 }

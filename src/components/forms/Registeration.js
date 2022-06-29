@@ -67,8 +67,7 @@ export const Registeration = () => {
                                         </Grid>
                                         <Grid item md={9} display={'flex'} ml={6} justifyContent={'flex-start'}>
                                             < Avatar size='md' src={avatarPreview} />
-                                            {/* </Grid> */}
-                                            {/* <Grid item m={3}> */}
+
                                             <Button
                                                 variant='contained'
                                                 component='label'

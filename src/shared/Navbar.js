@@ -120,7 +120,7 @@ export const Navbar = () => {
                                                 'aria-labelledby': 'basic-button',
                                             }}
                                         >
-                                            <MenuItem onClick={handleClose}>
+                                            <MenuItem >
                                                 <Cart />
                                             </MenuItem>
 
@@ -180,7 +180,7 @@ export const Navbar = () => {
                                         'aria-labelledby': 'basic-button',
                                     }}
                                 >
-                                    <MenuItem onClick={handleClose}>
+                                    <MenuItem >
                                         <Cart />
                                     </MenuItem>
 

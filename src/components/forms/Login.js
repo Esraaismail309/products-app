@@ -3,9 +3,11 @@ import * as Yup from "yup";
 import { Form, Formik } from "formik";
 import { Button, Container, Grid, Typography } from '@mui/material';
 import { InputField } from '../../shared/InputField';
-import { Link } from 'react-router-dom';
-export const Login = () => {
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
+export const Login = () => {
+    const navigate = useNavigate()
     const initialValues = {
         email: '',
         password: '',
@@ -14,9 +16,31 @@ export const Login = () => {
         email: Yup.string().required('Email Is Required').email('Email Is Invalid'),
         password: Yup.string().required('password Is Required').matches("^[A-z0-9]{8,}$", 'Your password should be Minimum eight characters, at least one letter and one number'),
     })
+
+    const notify = () => {
+        toast('')
+    }
     const onSubmit = (values) => {
-        // localStorage.setItem('user', JSON.stringify(values))
-        console.log(values);
+        let x = [JSON.parse(localStorage.getItem('user'))]
+        // console.log(x);
+        x.filter((ele) => {
+            if (ele.email === values.email) {
+                if (ele.password === values.password) {
+                    navigate('/products')
+                    toast.success(" congrats !", {
+                        position: toast.POSITION.TOP_RIGHT
+                    })
+                } else {
+                    toast.error("password is not correct,try again !", {
+                        position: toast.POSITION.TOP_RIGHT
+                    })
+                }
+            } else {
+                toast.error("Email is not correct,try again !", {
+                    position: toast.POSITION.TOP_RIGHT
+                })
+            }
+        })
     }
     return (
         <div>

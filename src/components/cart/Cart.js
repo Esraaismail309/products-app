@@ -98,20 +98,13 @@ export const Cart = () => {
                   </StyledTableCell>
                 </StyledTableRow>))}
             </TableBody>
-
           </Table>
-          <Box width={'100%'} py={3} >
-            <Box width={'40%'} display={'inline-block'} pl={3} >
-              <Link to={'/products'} style={{ textDecoration: 'none', backgroundColor: 'black', padding: '7px 12px', color: 'white', borderRadius: '4px' }} >
-                Continue Shopping
-              </Link>
-            </Box>
-
-
-            <Box width={'50%'} m={3} >  <strong >Total price :{getTotalPrice()} </strong></Box>
-          </Box>
+          <Box width={'50%'} m={3} >  <strong >Total price :{getTotalPrice()} </strong></Box>
+          <Box width={'50%'} m={3} >
+            <Link to={'/order'} className='btn'
+            >Confirm Order</Link> </Box>
         </TableContainer>
-      ) : <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+      ) : <div style={{ textAlign: 'center', marginTop: '1rem' }}>
         <h3>Your Cart Is Empty</h3>
         <Button variant='contained'>
           <Link to={'/products'} style={{ textDecoration: 'none', color: 'white' }}>
@@ -128,35 +121,4 @@ export const Cart = () => {
 
 
 
-
-// export default function CustomizedTables() {
-//   return (
-//     <TableContainer component={Paper}>
-//       <Table sx={{ minWidth: 700 }} aria-label="customized table">
-//         <TableHead>
-//           <TableRow>
-//             <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-//             <StyledTableCell align="right">Calories</StyledTableCell>
-//             <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-//             <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-//             <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
-//           </TableRow>
-//         </TableHead>
-//         <TableBody>
-//           {rows.map((row) => (
-//             <StyledTableRow key={row.name}>
-//               <StyledTableCell component="th" scope="row">
-//                 {row.name}
-//               </StyledTableCell>
-//               <StyledTableCell align="right">{row.calories}</StyledTableCell>
-//               <StyledTableCell align="right">{row.fat}</StyledTableCell>
-//               <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-//               <StyledTableCell align="right">{row.protein}</StyledTableCell>
-//             </StyledTableRow>
-//           ))}
-//         </TableBody>
-//       </Table>
-//     </TableContainer>
-//   );
-// }
 
