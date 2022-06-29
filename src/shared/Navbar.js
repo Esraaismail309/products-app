@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-
-
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,13 +11,15 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'; import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom';
+import { Cart } from '../components/cart/Cart';
+import { useSelector } from 'react-redux';
+import { Badge } from '@mui/material';
 const pages = ['All products'];
 const settings = ['Profile', 'Logout'];
 export const Navbar = () => {
-
+    const productCount = useSelector((data) => data.cart?.cartQuantity)
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -49,6 +49,7 @@ export const Navbar = () => {
             <AppBar position="static">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
+
                         <Typography
                             variant="h6"
                             noWrap
@@ -108,6 +109,7 @@ export const Navbar = () => {
                                             onClick={handleClick}
                                             sx={{ mt: 1, mx: 3, color: 'black', display: 'block' }}>
                                             <ShoppingCartIcon />
+                                            <Badge badgeContent={productCount} color="warning" sx={{ mb: 3.5, ml: 0.5 }} />
                                         </Button>
                                         <Menu
                                             id="basic-menu"
@@ -118,13 +120,18 @@ export const Navbar = () => {
                                                 'aria-labelledby': 'basic-button',
                                             }}
                                         >
-                                            <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                            <MenuItem onClick={handleClose}>
+                                                <Link to={'cart'}>
+                                                    <Cart />
+                                                </Link>
+                                            </MenuItem>
 
                                         </Menu>
                                     </div>
                                 ))}
                             </Menu>
                         </Box>
+                        <ShoppingBagOutlinedIcon />
                         <Typography
                             variant="h5"
                             noWrap
@@ -163,6 +170,8 @@ export const Navbar = () => {
                                     onClick={handleClick}
                                     sx={{ mt: 1, mx: 3, color: 'white', display: 'block' }}>
                                     <ShoppingCartIcon />
+                                    <Badge badgeContent={productCount} color="warning" sx={{ mb: 3.5, ml: 0.5 }} />
+
                                 </Button>
                                 <Menu
                                     id="basic-menu"
@@ -173,7 +182,9 @@ export const Navbar = () => {
                                         'aria-labelledby': 'basic-button',
                                     }}
                                 >
-                                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                    <MenuItem onClick={handleClose}>
+                                        <Link to={'cart'}>
+                                            <Cart /></Link></MenuItem>
 
                                 </Menu>
                             </>
@@ -211,6 +222,6 @@ export const Navbar = () => {
                     </Toolbar>
                 </Container>
             </AppBar>
-        </div>
+        </div >
     )
 }
