@@ -7,7 +7,9 @@ import { ProductList } from './components/productList/ProductList';
 import { ProductDetails } from './components/productList/ProductDetails'
 import { Provider } from "react-redux";
 import store from './store/Store';
-import { Cart } from './components/cart/Cart';
+import { InputField } from './shared/InputField';
+import { Registeration } from './components/forms/Registeration';
+import { Login } from './components/forms/Login';
 
 function App() {
   const queryClient = new QueryClient()
@@ -20,7 +22,9 @@ function App() {
           <Route path='/' element={<ProductList />} exact />
           <Route path='/products' element={<ProductList />} />
           <Route path='/products/:id' element={<ProductDetails />} />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/register' element={<Registeration />} />
+          <Route path='/login' element={<Login />} />
+
         </Routes>
         <ReactQueryDevtools position='bottom-right' initialIsOpen={false} />
       </Provider>

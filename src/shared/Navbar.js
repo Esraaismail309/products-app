@@ -121,9 +121,7 @@ export const Navbar = () => {
                                             }}
                                         >
                                             <MenuItem onClick={handleClose}>
-                                                <Link to={'cart'}>
-                                                    <Cart />
-                                                </Link>
+                                                <Cart />
                                             </MenuItem>
 
                                         </Menu>
@@ -183,8 +181,8 @@ export const Navbar = () => {
                                     }}
                                 >
                                     <MenuItem onClick={handleClose}>
-                                        <Link to={'cart'}>
-                                            <Cart /></Link></MenuItem>
+                                        <Cart />
+                                    </MenuItem>
 
                                 </Menu>
                             </>
