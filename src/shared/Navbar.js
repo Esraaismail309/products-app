@@ -243,7 +243,10 @@ export const Navbar = () => {
                                                 <Link to={'/userprofile'} style={{ textDecoration: 'none', color: 'black', display: 'block', mx: 3 }}>
                                                     {setting}
                                                 </Link>
-                                            ) : null}
+                                            ) :
+                                                <Link to={'/editprofile'} style={{ textDecoration: 'none', color: 'black', display: 'block', mx: 3 }}>
+                                                    {setting}
+                                                </Link>}
                                         </MenuItem>
                                     </div>
                                 ))}

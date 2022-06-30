@@ -13,6 +13,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Order } from './components/forms/Order';
 import { UserProfile } from './components/user/UserProfile';
+import { EditProfile } from './components/user/EditProfile';
 function App() {
   const queryClient = new QueryClient()
   return (
@@ -28,6 +29,8 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/order' element={<Order />} />
           <Route path='/userprofile' element={<UserProfile />} />
+          <Route path='/editprofile' element={<EditProfile />} />
+
         </Routes>
         <ReactQueryDevtools position='bottom-right' initialIsOpen={false} />
       </Provider>
