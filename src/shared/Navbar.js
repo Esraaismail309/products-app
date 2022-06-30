@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -17,12 +17,13 @@ import { Cart } from '../components/cart/Cart';
 import { useSelector } from 'react-redux';
 import { Badge } from '@mui/material';
 const pages = ['All products', 'Login'];
-const settings = ['Profile', 'Logout'];
+const settings = ['Profile', 'Edit Profile'];
 export const Navbar = () => {
     const productCount = useSelector((data) => data.cart?.cartQuantity)
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [profileImg, setProfileImg] = useState("/static/images/avatar/2.jpg")
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -44,8 +45,12 @@ export const Navbar = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-    const img = JSON.parse(localStorage.getItem('user'))?.avatar
-    // console.log(img);
+    useEffect(() => {
+
+        setProfileImg(JSON.parse(localStorage.getItem('user'))?.avatar)
+    }, [])
+
+
     return (
         <div>
             <AppBar position="fixed" style={{ backgroundColor: '#112B3C' }}>
@@ -208,11 +213,11 @@ export const Navbar = () => {
                                 </Menu>
                             </>
                         </Box>
-
+                        {/* Full screen */}
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar src={img ? img : "/static/images/avatar/2.jpg"} />
+                                    <Avatar src={profileImg} />
                                 </IconButton>
                             </Tooltip>
                             <Menu
@@ -232,9 +237,15 @@ export const Navbar = () => {
                                 onClose={handleCloseUserMenu}
                             >
                                 {settings.map((setting) => (
-                                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                        <Typography >{setting}</Typography>
-                                    </MenuItem>
+                                    <div key={setting}>
+                                        <MenuItem onClick={handleCloseUserMenu}>
+                                            {setting === 'Profile' ? (
+                                                <Link to={'/userprofile'} style={{ textDecoration: 'none', color: 'black', display: 'block', mx: 3 }}>
+                                                    {setting}
+                                                </Link>
+                                            ) : null}
+                                        </MenuItem>
+                                    </div>
                                 ))}
                             </Menu>
                         </Box>

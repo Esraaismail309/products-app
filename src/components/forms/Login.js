@@ -17,14 +17,10 @@ export const Login = () => {
         password: Yup.string().required('password Is Required').matches("^[A-z0-9]{8,}$", 'Your password should be Minimum eight characters, at least one letter and one number'),
     })
 
-    const notify = () => {
-        toast('')
-    }
     const onSubmit = (values) => {
-        let x = [JSON.parse(localStorage.getItem('user'))]
-        console.log(x);
-        if (x[0]) {
-            x.filter((ele) => {
+        let localUser = [JSON.parse(localStorage.getItem('user'))]
+        if (localUser[0]) {
+            localUser.filter((ele) => {
                 if (ele.email === values.email) {
                     if (ele.password === values.password) {
                         navigate('/products')
