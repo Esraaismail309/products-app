@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import { Cart } from '../components/cart/Cart';
 import { useSelector } from 'react-redux';
 import { Badge } from '@mui/material';
-const pages = ['All products'];
+const pages = ['All products', 'Login'];
 const settings = ['Profile', 'Logout'];
 export const Navbar = () => {
     const productCount = useSelector((data) => data.cart?.cartQuantity)
@@ -44,6 +44,8 @@ export const Navbar = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+    const img = JSON.parse(localStorage.getItem('user'))?.avatar
+    // console.log(img);
     return (
         <div>
             <AppBar position="fixed" style={{ backgroundColor: '#112B3C' }}>
@@ -96,13 +98,18 @@ export const Navbar = () => {
                                     display: { xs: 'block', md: 'none' },
                                 }}
                             >
+                                {/* small device */}
                                 {pages.map((page) => (
                                     <div key={page}>
                                         <Link to={'/products'} style={{ my: 2, textDecoration: 'none', color: 'black', display: 'block', mx: 3 }}>
                                             <MenuItem onClick={handleCloseNavMenu}>
                                                 <Typography >{page}</Typography>
                                             </MenuItem>
+
                                         </Link>
+                                        {/* <MenuItem onClick={handleCloseNavMenu}>
+                                                <Typography >{page}</Typography>
+                                            </MenuItem> */}
                                         <Button
                                             aria-controls={open ? 'basic-menu' : undefined}
                                             aria-haspopup="true"
@@ -149,19 +156,31 @@ export const Navbar = () => {
                             Product App
                         </Typography>
                         <ShoppingBagOutlinedIcon />
-
+                        {/* //full screen */}
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end', mr: 6 }}>
                             <>
                                 {pages.map((page) => (
-                                    <Button
-                                        key={page}
-                                        onClick={handleCloseNavMenu}
-                                    >
-                                        <Link to={'/products'} style={{ my: 2, textDecoration: 'none', color: 'white', display: 'block', mx: 3 }}>
-                                            {page}
-                                        </Link>
+                                    <div key={page}>
+                                        {page === 'Login' ? (
+                                            <Button
+                                                onClick={handleCloseNavMenu}
+                                            >
+                                                <Link to={'/login'} style={{ my: 2, textDecoration: 'none', color: 'white', display: 'block', mx: 3 }}>
+                                                    {page}
+                                                </Link>
 
-                                    </Button>
+                                            </Button>
+                                        ) : <Button
+
+                                            onClick={handleCloseNavMenu}
+                                        >
+                                            <Link to={'/products'} style={{ my: 2, textDecoration: 'none', color: 'white', display: 'block', mx: 3 }}>
+                                                {page}
+                                            </Link>
+
+                                        </Button>}
+
+                                    </div>
                                 ))}
                                 <Button
                                     aria-controls={open ? 'basic-menu' : undefined}
@@ -193,7 +212,7 @@ export const Navbar = () => {
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                    <Avatar src={img ? img : "/static/images/avatar/2.jpg"} />
                                 </IconButton>
                             </Tooltip>
                             <Menu

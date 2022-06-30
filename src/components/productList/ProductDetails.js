@@ -12,7 +12,7 @@ export const ProductDetails = () => {
         url: `https://fakestoreapi.com/products/${id}`
     })
     return (
-        <Container>
+        <Container sx={{ mt: 15 }}>
             {isLoading ? (<p> Loading ....</p >) :
                 <Grid container mt={5}>
                     <Grid item xs={10} sm={5} md={4}  >
@@ -36,8 +36,8 @@ export const ProductDetails = () => {
 
                 </Grid>
             }
-            <Link to={'/products'} style={{ textDecoration: 'none' }}>
-                <Button variant="contained" sx={{ borderRadius: "45%", float: 'right' }}><KeyboardBackspaceSharpIcon />  Back</Button>
+            <Link to={'/products'} style={{ textDecoration: 'none' }} >
+                <Button variant="contained" style={{ backgroundColor: '#112B3C' }} sx={{ float: 'right' }}><KeyboardBackspaceSharpIcon />  Back</Button>
             </Link>
         </Container>
     )

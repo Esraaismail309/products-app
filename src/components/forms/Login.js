@@ -22,28 +22,34 @@ export const Login = () => {
     }
     const onSubmit = (values) => {
         let x = [JSON.parse(localStorage.getItem('user'))]
-        // console.log(x);
-        x.filter((ele) => {
-            if (ele.email === values.email) {
-                if (ele.password === values.password) {
-                    navigate('/products')
-                    toast.success(" congrats !", {
-                        position: toast.POSITION.TOP_RIGHT
-                    })
+        console.log(x);
+        if (x[0]) {
+            x.filter((ele) => {
+                if (ele.email === values.email) {
+                    if (ele.password === values.password) {
+                        navigate('/products')
+                        toast.success(" congrats !", {
+                            position: toast.POSITION.TOP_RIGHT
+                        })
+                    } else {
+                        toast.error("password is not correct,try again !", {
+                            position: toast.POSITION.TOP_RIGHT
+                        })
+                    }
                 } else {
-                    toast.error("password is not correct,try again !", {
+                    toast.error("Email is not correct,try again !", {
                         position: toast.POSITION.TOP_RIGHT
                     })
                 }
-            } else {
-                toast.error("Email is not correct,try again !", {
-                    position: toast.POSITION.TOP_RIGHT
-                })
-            }
-        })
+            })
+        } else {
+            toast.error("Please Register first !", {
+                position: toast.POSITION.TOP_RIGHT
+            })
+        }
     }
     return (
-        <div>
+        <div style={{ marginTop: '4rem' }}>
 
             <Formik
                 initialValues={initialValues}

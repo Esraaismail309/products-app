@@ -34,18 +34,18 @@ export const Registeration = () => {
     }
 
     return (
-        <div>
+        <div style={{ marginTop: '4rem' }}>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={onSubmit}>{
                     formik => {
                         return (
-                            <Form style={{ padding: ' 4rem 0' }}>
+                            <Form style={{ padding: ' 4rem 0', width: '50%', margin: 'auto' }}  >
                                 <Container >
-                                    <Grid className='form' pb={9} container spacing={5} >
+                                    <Grid className='form' pb={9} container spacing={3} >
                                         <Grid item sm={12} textAlign={'center'}  >
-                                            <Typography variant='h2' mb={5} sm={12} md={12} >Registration Form</Typography>
+                                            <Typography variant='h3' mb={5} sm={12} md={12} >Registration Form</Typography>
                                         </Grid>
                                         <Grid item sm={8} m={'auto'} md={5} >
                                             <InputField name='firstName' label='First name' type='text' />
