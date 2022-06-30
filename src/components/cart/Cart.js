@@ -106,7 +106,7 @@ export const Cart = () => {
         </TableContainer>
       ) : <div style={{ textAlign: 'center', marginTop: '1rem' }}>
         <h3>Your Cart Is Empty</h3>
-        <Button variant='contained'>
+        <Button variant='contained' style={{ backgroundColor: '#112B3C' }}>
           <Link to={'/products'} style={{ textDecoration: 'none', color: 'white' }}>
             Go Shopping
           </Link>

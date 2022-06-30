@@ -1,0 +1,17 @@
+.cardBtn {
+  position: absolute !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 75% !important;
+  margin: auto !important;
+  background-color: #112b3c !important;
+}
+.card {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+}
+.card img {
+  transition: all 0.5s;
+}
+.card img:hover {
+  transform: scale(1.2);
+}

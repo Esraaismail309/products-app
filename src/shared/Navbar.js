@@ -112,9 +112,6 @@ export const Navbar = () => {
                                             </MenuItem>
 
                                         </Link>
-                                        {/* <MenuItem onClick={handleCloseNavMenu}>
-                                                <Typography >{page}</Typography>
-                                            </MenuItem> */}
                                         <Button
                                             aria-controls={open ? 'basic-menu' : undefined}
                                             aria-haspopup="true"
@@ -160,7 +157,6 @@ export const Navbar = () => {
                         >
                             Product App
                         </Typography>
-                        <ShoppingBagOutlinedIcon />
                         {/* //full screen */}
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end', mr: 6 }}>
                             <>
@@ -170,7 +166,7 @@ export const Navbar = () => {
                                             <Button
                                                 onClick={handleCloseNavMenu}
                                             >
-                                                <Link to={'/login'} style={{ my: 2, textDecoration: 'none', color: 'white', display: 'block', mx: 3 }}>
+                                                <Link to={'/login'} style={{ marginTop: '0.5rem', textDecoration: 'none', color: 'white', display: 'block', mx: 3 }}>
                                                     {page}
                                                 </Link>
 
@@ -179,7 +175,7 @@ export const Navbar = () => {
 
                                             onClick={handleCloseNavMenu}
                                         >
-                                            <Link to={'/products'} style={{ my: 2, textDecoration: 'none', color: 'white', display: 'block', mx: 3 }}>
+                                            <Link to={'/products'} style={{ marginTop: '0.5rem', textDecoration: 'none', color: 'white', display: 'block', mx: 3 }}>
                                                 {page}
                                             </Link>
 

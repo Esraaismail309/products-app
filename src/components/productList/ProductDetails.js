@@ -4,6 +4,8 @@ import { Container } from '@mui/system'
 import { Link, useParams } from 'react-router-dom'
 import { CallApi } from './../../api/CallApi'
 import KeyboardBackspaceSharpIcon from '@mui/icons-material/KeyboardBackspaceSharp';
+import { Loader } from '../../shared/Loader'
+import { Rating } from '../../shared/Rating'
 
 export const ProductDetails = () => {
     const { id } = useParams()
@@ -13,7 +15,7 @@ export const ProductDetails = () => {
     })
     return (
         <Container sx={{ mt: 15 }}>
-            {isLoading ? (<p> Loading ....</p >) :
+            {isLoading ? (<Loader />) :
                 <Grid container mt={5}>
                     <Grid item xs={10} sm={5} md={4}  >
                         <img src={data.data.image} alt={data.data.title} width="100%" />
@@ -31,9 +33,8 @@ export const ProductDetails = () => {
                         <Typography variant='h6' display="block">
                             Price :   {data.data.price}
                         </Typography>
+                        <Rating value={data.data.rating.rate} />
                     </Grid>
-
-
                 </Grid>
             }
             <Link to={'/products'} style={{ textDecoration: 'none' }} >

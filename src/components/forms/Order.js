@@ -48,7 +48,7 @@ export const Order = () => {
                                                 type='submit'
                                                 style={{ backgroundColor: '#112B3C' }}>
 
-                                                Register
+                                                Order
                                             </Button>
                                         </Grid>
                                     </Grid>
