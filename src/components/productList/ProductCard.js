@@ -31,12 +31,13 @@ export const ProductCard = ({ product }) => {
                 <Typography variant='button' display="block">
                     {product.price}
                 </Typography>
-                <Button type='button' variant="contained" style={{ display: 'block', margin: 'auto' }} >
+                <Button type='button' variant="contained" style={{ display: 'block', margin: 'auto', backgroundColor: '#112B3C' }} >
                     <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'white', }}>
                         details
                     </Link>
                 </Button>
                 <Button type='button' variant="contained" sx={{ bottom: 0, m: 2 }}
+                    style={{ backgroundColor: '#112B3C' }}
                     onClick={() => {
                         handleAddToCart(product)
 

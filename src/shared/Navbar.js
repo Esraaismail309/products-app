@@ -46,7 +46,7 @@ export const Navbar = () => {
     };
     return (
         <div>
-            <AppBar position="static">
+            <AppBar position="fixed" style={{ backgroundColor: '#112B3C' }}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
 
@@ -65,6 +65,7 @@ export const Navbar = () => {
                         >
                             Product App
                         </Typography>
+
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                             <IconButton
@@ -134,7 +135,6 @@ export const Navbar = () => {
                             variant="h5"
                             noWrap
                             component="a"
-                            // href=""
                             sx={{
                                 mr: 2,
                                 display: { xs: 'flex', md: 'none' },
@@ -148,6 +148,8 @@ export const Navbar = () => {
                         >
                             Product App
                         </Typography>
+                        <ShoppingBagOutlinedIcon />
+
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end', mr: 6 }}>
                             <>
                                 {pages.map((page) => (
