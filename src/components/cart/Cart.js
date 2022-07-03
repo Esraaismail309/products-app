@@ -23,7 +23,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
   },
-  // hide last border
+
   '&:last-child td, &:last-child th': {
     border: 0,
   },
@@ -61,7 +61,6 @@ export const Cart = () => {
     getTotalPrice()
   }, [])
 
-  // console.log(product);
   return (
     <Container>
       {product.products.length >= 1 ? (
@@ -81,9 +80,9 @@ export const Cart = () => {
               {product.products.map((row, i) => (
                 <StyledTableRow key={i}>
                   <StyledTableCell >{i + 1}</StyledTableCell>
-                  <StyledTableCell scope="row">
-                    <img src={row.image} alt={row.title} width='30%' />
-                  </StyledTableCell>
+                  {/* <StyledTableCell scope="row">
+                    <img src={row.image} alt={row.title} width='15%' />
+                  </StyledTableCell> */}
                   <StyledTableCell >{row.title}</StyledTableCell>
                   <StyledTableCell >
                     <Badge color="error" type='button' badgeContent="-" sx={{ mr: 2 }} onClick={() => { handleDecrease(row) }} />

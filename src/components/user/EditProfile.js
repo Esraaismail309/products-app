@@ -30,7 +30,7 @@ export const EditProfile = () => {
 
     const onSubmit = (values) => {
         localStorage.setItem('user', JSON.stringify(values))
-        console.log(values);
+
     }
 
     return (

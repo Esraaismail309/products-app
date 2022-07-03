@@ -1,10 +1,13 @@
 import React from 'react'
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
-import { Avatar, Button, Grid, Typography } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import { InputField } from '../../shared/InputField';
 import { Container } from '@mui/system';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 export const Order = () => {
+    let navigate = useNavigate();
     const initialValues = {
         uName: '',
         phone: '',
@@ -16,7 +19,8 @@ export const Order = () => {
         address: Yup.string().required('Your Phone Is Required'),
     })
     const onSubmit = (values) => {
-        console.log(values);
+        toast.success('Congrats you confirm the order')
+        navigate('/products')
     }
     return (
         <div>
@@ -36,7 +40,7 @@ export const Order = () => {
                                             <InputField name='uName' label='Your Name' type='text' />
                                         </Grid>
                                         <Grid item sm={10} m={'auto'}  >
-                                            <InputField name='phone' label='Your Phone' type='number' />
+                                            <InputField name='phone' label='Your Phone' type='text' />
                                         </Grid>
                                         <Grid item sm={10} m={'auto'}  >
                                             <InputField name='address' label='Your Address' type='text' />

@@ -19,7 +19,7 @@ export const ProductCard = ({ product }) => {
         dispatch(addToCartAction(product))
         notify()
     }
-    // console.log(product);
+
 
     return (
         <Grid item xs={2} sm={4} md={3} textAlign={'center'} >

@@ -5,11 +5,13 @@ import { Avatar, Button, Grid, Typography } from '@mui/material';
 import { InputField } from '../../shared/InputField';
 import { Container } from '@mui/system';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-
 import './style.scss'
 import { Link } from 'react-router-dom';
-export const Registeration = () => {
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
+export const Registeration = () => {
+    let navigate = useNavigate();
     const [avatarPreview, setAvatarPreview] = useState('/avatars/default.png');
 
     const initialValues = {
@@ -30,7 +32,7 @@ export const Registeration = () => {
     })
     const onSubmit = (values) => {
         localStorage.setItem('user', JSON.stringify(values))
-        console.log(values);
+        navigate('/login')
     }
 
     return (
